@@ -1,0 +1,101 @@
+/**
+ * Snippet Title: Roadmap
+ * Scope:         global
+ * Goal:          eyecandy
+ * Description:   CSS roadmap.
+ * Creator:       Pierre Duverneix
+ * Tested on:     Moodle 5.1, Firefox for Mac
+ * Usage note:    Use CSS classes to create the HTML structure displaying a vertical roadmap.
+ *
+ * @copyright     2026 Fondation UNIT
+ * @author        Pierre Duverneix
+ * @license       http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+.roadmap-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  position: relative;
+  padding-left: 2.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.875rem;
+    top: 0;
+    bottom: 0;
+    width: 0.25rem;
+    background: var(--bs-border-color);
+    border-radius: var(--bs-border-radius-pill);
+    z-index: 1;
+  }
+
+  .roadmap-progress-fill {
+    position: absolute;
+    left: 0.875rem;
+    top: 0;
+    width: 0.25rem;
+    height: 50%;
+    background: var(--bs-primary);
+    box-shadow: 0 0 0.625rem rgba(var(--bs-primary-rgb), 0.4);
+    border-radius: var(--bs-border-radius-pill);
+    z-index: 2;
+    transition: height 1s ease-in-out;
+  }
+
+  .step {
+    position: relative;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+
+    .circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      background: var(--bs-body-bg);
+      border: var(--bs-border-width) solid var(--bs-border-color);
+      border-radius: 50%;
+      margin-left: -2.5rem;
+      margin-right: 1.25rem;
+      font-size: var(--bs-body-font-size-sm);
+      font-weight: var(--bs-font-weight-bold);
+      color: var(--bs-secondary-color);
+      transition: all 0.4s ease;
+    }
+
+    .content {
+      background: var(--bs-body-bg);
+      padding: 0 1.25rem;
+      border: var(--bs-border-width) solid var(--bs-border-color);
+      border-radius: var(--bs-border-radius-lg);
+      box-shadow: var(--bs-box-shadow-sm);
+      flex-grow: 1;
+      transition: transform 0.3s ease;
+    }
+
+    &.completed {
+      .circle {
+        border-color: var(--bs-primary);
+        background: var(--bs-primary);
+        color: var(--bs-white);
+        box-shadow: 0 0 0.9375rem rgba(var(--bs-primary-rgb), 0.4);
+      }
+    }
+
+    &.active {
+      .circle {
+        border-color: var(--bs-primary);
+        color: var(--bs-primary);
+      }
+
+      .content {
+        border: 0.25rem solid var(--bs-primary);
+      }
+    }
+  }
+}

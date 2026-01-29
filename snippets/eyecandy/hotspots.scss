@@ -1,0 +1,103 @@
+/**
+ * Snippet Title: Hotspots
+ * Scope:         global
+ * Goal:          eyecandy
+ * Description:   CSS Hotspots on image.
+ * Creator:       Pierre Duverneix
+ * Tested on:     Moodle 5.1, Firefox for Mac
+ * Usage note:    Use CSS classes to create a simple HTML structure.
+ *
+ * @copyright     2026 Fondation UNIT
+ * @author        Pierre Duverneix
+ * @license       http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+.hotspot-container {
+  position: relative;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.main-image {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: filter 0.5s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.hotspot {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-color: $primary;
+  border: 3px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.hotspot::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 22px;
+  height: 22px;
+  border: 3px solid $primary;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 200px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+
+  h4 {
+    margin: 0 0 5px 0;
+    color: $primary;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--bs-body-color);
+    line-height: 1.4;
+  }
+}
+
+.hotspot:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hotspot-container:has(.hotspot:hover) .main-image {
+  filter: grayscale(85%) brightness(85%);
+}
