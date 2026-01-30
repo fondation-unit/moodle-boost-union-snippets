@@ -1,0 +1,25 @@
+{
+  "name": "moodle-boost-union-snippets",
+  "version": "1.0.0",
+  "description": "SCSS snippets repository for Moodle Boost Union Theme",
+  "main": "index.js",
+  "scripts": {
+    "lint": "stylelint \"**/*.scss\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fondation-unit/moodle-boost-union-snippets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fondation-unit/moodle-boost-union-snippets/issues"
+  },
+  "homepage": "https://github.com/fondation-unit/moodle-boost-union-snippets#readme",
+  "devDependencies": {
+    "postcss-scss": "^4.0.9",
+    "stylelint": "^15.11.0",
+    "stylelint-csstree-validator": "^3.0.0"
+  }
+}
